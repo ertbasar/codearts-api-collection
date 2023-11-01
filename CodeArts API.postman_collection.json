@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "b896208a-6f3d-4286-b04d-1630ffd5746d",
+		"name": "CodeArts API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27422791"
+	},
+	"item": [
+		{
+			"name": "Get X-Auth-Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"auth\": {\r\n\t\t\"identity\": {\r\n\t\t\t\"password\": {\r\n\t\t\t\t\"user\": {\r\n\t\t\t\t\t\"password\": \"i23\",\r\n\t\t\t\t\t\"domain\": {\r\n\t\t\t\t\t\t\"name\": \"69\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"name\": \"69\"\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t\"methods\": [\r\n\t\t\t\t\"password\"\r\n\t\t\t]\r\n\t\t},\r\n\t\t\"scope\": {\r\n\t\t\t\"project\": {\r\n\t\t\t\t\"name\": \"la-north-2\"\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://iam.la-north-2.myhuaweicloud.com/v3/auth/tokens"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sprint (Iteration)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"begin_time\": \"2023-08-10\",\r\n    \"end_time\": \"2023-08-24\",\r\n    \"name\": \"Sprint1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://projectman-ext.la-north-2.myhuaweicloud.com/v4/projects/a830/iteration"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Work Item (Issue)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"iteration_id\": 348464,\r\n  \"name\": \"Task2\",\r\n  \"parent_issue_id\": 297936,\r\n  \"priority_id\": 2,\r\n  \"tracker_id\": 2\r\n}"
+				},
+				"url": "https://projectman-ext.la-north-2.myhuaweicloud.com/v4/projects/a89230/issue"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Repository",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Repository1\",\r\n  \"project_uuid\": \"a8930\"\r\n}"
+				},
+				"url": "https://codehub-ext.la-north-2.myhuaweicloud.com/v1/repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Repositories in Project",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://codehub-ext.la-north-2.myhuaweicloud.com/v1/projects/a8930/repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Check Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"git_url\": \"git@codehutory1.git\",\r\n  \"git_branch\": \"master\",\r\n  \"language\": [\r\n    \"java\"\r\n  ],\r\n  \"rule_sets\": [\r\n    {\r\n      \"language\": \"java\"\r\n    }\r\n  ]\r\n}"
+				},
+				"url": "https://codecheck-ext.la-north-2.myhuaweicloud.com/v2/a8930/task"
+			},
+			"response": []
+		},
+		{
+			"name": "Run Check Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": "https://codecheck-ext.ap-southeast-3myhuaweicloud.com/v2/tasks/c4b0/run"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Test Record",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "https://codecheck-ext.ap-southeast-3.myhuaweicloud.com/v2/32da70/tasks/c469eb0/checkrecord"
+			},
+			"response": []
+		},
+		{
+			"name": "Add SSH Key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"key\": \"ssh-rsa AAAAB3fprzPrM= demo\",\r\n  \"title\": \"SSH_Key\"\r\n}"
+				},
+				"url": "https://codehub-ext.la-north-2.myhuaweicloud.com/v1/users/sshkey"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Job List by Project ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://cloudbuild-ext.la-north-2.myhuaweicloud.com/v3/fde2/jobs?page_index=0&page_size=10",
+					"protocol": "https",
+					"host": [
+						"cloudbuild-ext",
+						"la-north-2",
+						"myhuaweicloud",
+						"com"
+					],
+					"path": [
+						"v3",
+						"fde2",
+						"jobs"
+					],
+					"query": [
+						{
+							"key": "page_index",
+							"value": "0"
+						},
+						{
+							"key": "page_size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run Job",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"job_id\": \"80d6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://cloudbuild-ext.la-north-2.myhuaweicloud.com/v3/jobs/build"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Job Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": "https://cloudbuild-ext.la-north-2.myhuaweicloud.com/v3/jobs/80d6/status"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Build History Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": "https://cloudbuild-ext.la-north-2.myhuaweicloud.com/v3/jobs/80d6/1/history-details"
+			},
+			"response": []
+		},
+		{
+			"name": "List Deploy Tasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://codearts-deploy.la-north-2.myhuaweicloud.com/v2/fd7e2/tasks/list?page=1&size=10",
+					"protocol": "https",
+					"host": [
+						"codearts-deploy",
+						"la-north-2",
+						"myhuaweicloud",
+						"com"
+					],
+					"path": [
+						"v2",
+						"fd7e2",
+						"tasks",
+						"list"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Host Cluster",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"cluster1\",\r\n \"project_id\": \"fde2\",\r\n \"os\": \"linux\",\r\n \"is_proxy_mode\": 0\r\n}"
+				},
+				"url": "https://codearts-deploy.la-north-2.myhuaweicloud.com/v1/resources/host-groups"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Host",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"host_name\": \"ecs-1\",\r\n  \"ip\": \"10.222\",\r\n  \"port\": 22,\r\n  \"os\": \"linux\",\r\n  \"as_proxy\": false,\r\n  \"authorization\": {\r\n    \"username\": \"root\",\r\n    \"password\": \"H\",\r\n    \"trusted_type\": 0\r\n  }\r\n}"
+				},
+				"url": "https://codearts-deploy.la-north-2.myhuaweicloud.com/v1/resources/host-groups/0c/hosts"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Environment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"project_id\": \"fde2\",\r\n  \"name\": \"environment1\",\r\n  \"deploy_type\": 0,\r\n  \"os\": \"linux\"\r\n}"
+				},
+				"url": "https://codearts-deploy.la-north-2.myhuaweicloud.com/v1/applications/175/environments"
+			},
+			"response": []
+		},
+		{
+			"name": "Import Host to Environment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"group_id\": \"0752c8ac\",\r\n  \"host_ids\": [\r\n    \"d603506\"\r\n  ]\r\n}"
+				},
+				"url": "https://codearts-deploy.la-north-2.myhuaweicloud.com/v1/applications/17efd75/environments/dffd8/hosts/import"
+			},
+			"response": []
+		},
+		{
+			"name": "Start Deploy Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"params\": [\r\n    {\r\n      \"key\": \"host_group\",\r\n      \"value\": \"e7fd8\"\r\n    },\r\n    {\r\n      \"key\": \"package_url\",\r\n      \"value\": \"/Repository1-cloudbuild/20230921.1/demoapp.jar\"\r\n    },\r\n    {\r\n      \"key\": \"service_port\",\r\n      \"value\": \"22\"\r\n    },\r\n    {\r\n      \"key\": \"package_name\",\r\n      \"value\": \"demoapp\"\r\n    }\r\n  ]\r\n}"
+				},
+				"url": "https://codearts-deploy.la-north-2.myhuaweicloud.com/v2/tasks/f86f/start"
+			},
+			"response": []
+		}
+	]
+}
